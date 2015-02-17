@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="rssReader">
+<head>
+    <title>Rss Reader</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="webapp.css"/>
+    <meta charset="utf-8">
+</head>
+<body ng-view>
+<div ng-controller="FeedController as Feed">
+
+    <div class="search">
+        <input type="url" ng-model="Feed.newFeedUrl" required placeholder="Feed URL"
+               data-ng-keydown="Feed.getFeed($event)" ng-class="{searched: Feed.title}">
+    </div>
+    <div class="result-wrap" ng-class="{searched: Feed.title}">
+        <div class="result">
+            <div class="feed-mast">
+                <img ng-src="{{Feed.image}}"/>
+                <a ng-href="{{Feed.link}}" class="mast-link">
+                    <span> {{Feed.title}} </span>
+                </a>
+                <span class="mast-desc">{{Feed.description}}</span>
+            </div>
+
+            <div ng-repeat="item in Feed.items" class="feed-item">
+                <img ng-src="{{item.media}}"/>
+                <a ng-href="{{item.link}}">
+                    <span> {{item.title | truncate : 30}} </span>
+                </a>
+
+                <p>{{item.description | truncate:150}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

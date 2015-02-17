@@ -1,0 +1,13 @@
+{
+  "name": "RSS-Reader",
+  "description": "A simple RSS Reader",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.12.0",
+    "express": "3.x",
+    "xml2js": "*"
+  }
+}
